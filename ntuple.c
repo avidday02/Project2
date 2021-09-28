@@ -100,12 +100,12 @@ char *ntupToString(ntuple t){
   //need to delineate quotation for strings \""
   //when call tuple to print we want to include ("...","...")
 
- /* int n = t -> arity;
-  char arr[100] = "";
-
-  for(int i = 0; i > n; i++){
-
+ int n = t -> arity;
+ char *c;
+  //char arr[100] = "";
+  for(int i = 0; i < n; i++){
+    strcat(c, t -> items[i]);
   }
-  return arr[];*/
+  return c;
 }
 

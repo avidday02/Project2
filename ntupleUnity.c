@@ -16,7 +16,16 @@ void test1(void){
   TEST_ASSERT_EQUAL_STRING("hi mom", get(0, testTuple1));
   ntuple testTuple2 = newTuple(1, "hi mom");
   TEST_ASSERT_TRUE(equal(testTuple1, testTuple2));
+  put(0, "hello mum", testTuple1);
+  TEST_ASSERT_EQUAL_STRING("hello mum", get(0, testTuple1));
+  ntuple testTuple3 = newTuple(1,"hello mum");
+  TEST_ASSERT_TRUE(equal(testTuple1, testTuple3));
+  
+  //TEST_ASSERT_EQUAL_STRING("");
 
+}
+
+void test2(void){
 }
 
 // test suites will go here - see class notes
