@@ -20,7 +20,19 @@ void test1(void){
   TEST_ASSERT_EQUAL_STRING("hello mum", get(0, testTuple1));
   ntuple testTuple3 = newTuple(1,"hello mum");
   TEST_ASSERT_TRUE(equal(testTuple1, testTuple3));
-  
+  //TEST_ASSERT_EQUAL_STRING("hello mum", ntupToString(testTuple1));
+  printf("%s\n",ntupToString(testTuple1));
+  ntuple testTuple4 = newTuple(2,"hello mum", "fuck");
+  TEST_ASSERT_EQUAL_STRING("fuck", get(1, testTuple4));
+  printf("%s\n",ntupToString(testTuple4));
+  put(2, "asdf", testTuple4);
+  printf("%s\n",ntupToString(testTuple4));
+  ntuple zeroTuple = newTuple(0);
+  printf("%s\n",ntupToString(zeroTuple));
+
+
+
+
   //TEST_ASSERT_EQUAL_STRING("");
 
 }

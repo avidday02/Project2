@@ -96,16 +96,26 @@ bool isNtuple(ntuple t,int n){
    String returned should be exactly the correct length to hold
    the tuple. */
 char *ntupToString(ntuple t){
-  
-  //need to delineate quotation for strings \""
+  //need to delineate quotation for strings \"\"
   //when call tuple to print we want to include ("...","...")
-
- int n = t -> arity;
- char *c;
-  //char arr[100] = "";
+  //max arity * max string lenth
+ /*
+  int n = t -> arity;
+  //char tupleArray[100];
+  char *c = malloc(50 * sizeof(char*));
+  strcat(c, "(");
   for(int i = 0; i < n; i++){
+    strcat(c, "\"");
     strcat(c, t -> items[i]);
+    if(i == n -1){
+      strcat(c, "\"");
+    }
+    else{
+      strcat(c, "\",");
+    }
   }
-  return c;
+  strcat(c, ") \n");
+  return c; 
+  */
 }
 
