@@ -49,7 +49,6 @@ ntuple newTuple(int n,...){
   return t;
 }
 
-
 // frees all strings in tuple AND the structure itself
 void freeTuple(ntuple t){
   int n = arity(t);
@@ -67,11 +66,13 @@ bool equal(ntuple t1, ntuple t2){
   if(arity(t1) == arity(t2)){
     for(int i = 0; i < arity(t1); i++){
       if(!strcmp(get(i, t1),get(i, t2))){
+        return true;
       }
       else{
         return false;
       }
     }
+    return true;
   } 
   else{
     return false;
@@ -83,39 +84,38 @@ int arity(ntuple t){
   return t -> arity;
 } 
 
-
 // returns true if tuple has an arity of n
 bool isNtuple(ntuple t,int n){
   return (t -> arity == n);
 }
-
 
 /* returns a string representation of t. Entire tuple should be 
    delimited by (), separated by commas, with every item in 
    double quotes and no spaces e.g. (), ("go","away","now",""). 
    String returned should be exactly the correct length to hold
    the tuple. */
-char *ntupToString(ntuple t){
   //need to delineate quotation for strings \"\"
   //when call tuple to print we want to include ("...","...")
-  //max arity * max string lenth
- /*
-  int n = t -> arity;
-  //char tupleArray[100];
-  char *c = malloc(50 * sizeof(char*));
-  strcat(c, "(");
-  for(int i = 0; i < n; i++){
-    strcat(c, "\"");
-    strcat(c, t -> items[i]);
-    if(i == n -1){
-      strcat(c, "\"");
+  //want to allocate memory based on max arity * max string length
+char *ntupToString(ntuple t){
+  int numberOfStrings = t -> arity;
+  char tupleArray[1000] = {};
+  strcat(tupleArray, "(");
+  for(int i = 0; i < numberOfStrings; i++){
+    strcat(tupleArray, "\"");
+    if(t -> items[i] != NULL){
+        strcat(tupleArray, t -> items[i]);
+    }
+    if(i == numberOfStrings - 1){
+      strcat(tupleArray, "\"");
     }
     else{
-      strcat(c, "\",");
+      strcat(tupleArray, "\",");
     }
   }
-  strcat(c, ") \n");
-  return c; 
-  */
+  strcat(tupleArray, ") \n");
+  char* SIZE = malloc(sizeof(char)*strlen(tupleArray)+1);
+  strcpy(SIZE, tupleArray);                                 
+  return SIZE; 
 }
 
