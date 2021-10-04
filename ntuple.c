@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
   /* Project #2
    EGRE245 Fall 2021
    D. Adams <-- I used my name here! */
@@ -50,12 +60,22 @@ ntuple newTuple(int n,...){
 }
 
 // frees all strings in tuple AND the structure itself
+/*
 void freeTuple(ntuple t){
   int n = arity(t);
   for(int i = 0; i <= n; i++){
     free(t -> items[i]);
   }
   free(t);
+}
+*/
+
+void freeTuple(ntuple usrTuple){
+  for (int i = 0; i < usrTuple->arity; i++){
+    free(usrTuple->items[i]);
+  }
+  free(usrTuple);
+  return;
 }
 
 /* returns true it t1==t2, false otherwise. Two tuples are
